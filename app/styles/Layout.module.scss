@@ -1,0 +1,24 @@
+@import 'common';
+
+.wrapper {
+  @include flex(space-between, center, column);
+  header {
+    .navLink {
+      display: flex;
+      margin: auto;
+      margin-top: 5rem;
+      li {
+        padding-right: 2rem;
+      }
+    }
+  }
+  main {
+    width: 100%;
+  }
+  footer {
+    .footerCopy {
+      color: #333;
+      margin-top: 2rem;
+    }
+  }
+}

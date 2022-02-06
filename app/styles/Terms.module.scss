@@ -1,0 +1,17 @@
+@import 'common';
+
+.containerContent {
+  background-color: #eee;
+  width: 50%;
+  margin: auto;
+  margin-top: 5rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 5rem;
+  @include flex(space-between, center, column);
+}
+
+.paraTerms {
+  font-size: 1.6rem;
+  padding: 1rem 0;
+}

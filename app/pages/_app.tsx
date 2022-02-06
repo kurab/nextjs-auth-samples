@@ -1,0 +1,26 @@
+import '../styles/globals.css';
+import type { AppProps } from 'next/app';
+import AuthLayout from '../components/templates/AuthLayout';
+import Layout from '../components/templates/Layout';
+
+//MyApp.getInitialProps = async () => ({ pageProps: {} });
+function MyApp({ Component, pageProps }: AppProps) {
+  switch (pageProps.layout) {
+    case 'auth': {
+      return (
+        <AuthLayout>
+          <Component {...pageProps} />
+        </AuthLayout>
+      );
+    }
+    default: {
+      return (
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
+      );
+    }
+  }
+}
+
+export default MyApp;

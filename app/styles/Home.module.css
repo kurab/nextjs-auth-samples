@@ -1,0 +1,56 @@
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 5rem;
+  margin: auto;
+}
+
+.containerContent {
+  background-color: #eee;
+  width: 50%;
+  margin: auto;
+  margin-top: 5rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.btnLogout {
+  width: 300px;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 9999rem;
+  background-color: #f75454;
+  color: #fff;
+  cursor: pointer;
+}
+
+.imgKeyVisual {
+  border-radius: 2rem;
+}
+/*# sourceMappingURL=Home.module.css.map */

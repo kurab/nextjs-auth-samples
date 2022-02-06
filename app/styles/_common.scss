@@ -1,0 +1,14 @@
+$base-color: #e1d6d6;
+
+@mixin flex($justify, $align, $direction) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+.container {
+  @include flex(space-around, center, column);
+  padding: 5rem;
+  margin: auto;
+}

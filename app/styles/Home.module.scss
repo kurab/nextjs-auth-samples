@@ -1,0 +1,28 @@
+@import 'common';
+
+.containerContent {
+  background-color: #eee;
+  width: 50%;
+  margin: auto;
+  margin-top: 5rem;
+  border: 1px solid #ccc;
+  border-radius: 2rem;
+  padding: 5rem;
+  @include flex(space-between, center, column);
+}
+
+.btnLogout {
+  width: 300px;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 9999rem;
+  background-color: #f75454;
+  color: #fff;
+  cursor: pointer;
+}
+
+.imgKeyVisual {
+  border-radius: 2rem;
+}

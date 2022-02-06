@@ -1,0 +1,23 @@
+@import 'common';
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  background-color: $base-color;
+  font-family: 'Arial', sans-serif;
+  font-size: 1.6rem;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
