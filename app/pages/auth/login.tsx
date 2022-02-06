@@ -1,8 +1,11 @@
 import type { NextPage } from 'next';
-import Link from 'next/link';
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import styles from '../../styles/auth/Login.module.css';
+import { signIn, useSession } from 'next-auth/react';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import LoadingSpinner from '../../components/atoms/LoadingSpinner';
 
 export const getServerSideProps = async (context: any) => ({
   props: {
@@ -17,10 +20,21 @@ const Login: NextPage = () => {
     formState: { isDirty, isValid },
   } = useForm({ mode: 'onChange' });
 
-  const onSubmitLogin = (formData: any) => {
-    console.log(formData);
+  const { data: session } = useSession();
+  const router = useRouter();
+  const [loginLoading, setLoading] = useState<boolean>(false);
+
+  useEffect(() => {
+    if (session && router.isReady) {
+      setLoading(false);
+      router.replace('/');
+    }
+  }, [session, router]);
+
+  const onClickGithubLogin = async () => {
+    setLoading(true);
+    await signIn('github');
   };
-  const onClickGithubLogin = () => alert('github');
 
   return (
     <div className={styles.container}>
@@ -34,36 +48,15 @@ const Login: NextPage = () => {
       </Head>
       <div className={styles.authBox}>
         <h1>Login</h1>
-        <form onSubmit={handleSubmit(onSubmitLogin)}>
-          <label>Email</label>
-          <input
-            type="email"
-            placeholder="Email"
-            {...register('email', { required: true })}
-          />
-          <label>Password</label>
-          <input
-            type="password"
-            placeholder="Password"
-            {...register('password', { required: true })}
-          />
-          <button
-            type="submit"
-            className={styles.btnAuthLogin}
-            disabled={!isDirty || !isValid}
-          >
-            Login
+        {loginLoading ? (
+          <button className={styles.btnAuthGithub}>
+            <LoadingSpinner size={3} margin={8} color={'#fff'} />
           </button>
-        </form>
-        or
-        <button className={styles.btnAuthGithub} onClick={onClickGithubLogin}>
-          Login with GitHub
-        </button>
-      </div>
-      <div className="other-option">
-        <Link href="/auth/register">
-          <a>Register</a>
-        </Link>
+        ) : (
+          <button className={styles.btnAuthGithub} onClick={onClickGithubLogin}>
+            Login with GitHub
+          </button>
+        )}
       </div>
     </div>
   );

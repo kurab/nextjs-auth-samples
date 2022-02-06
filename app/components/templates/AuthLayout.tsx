@@ -13,6 +13,11 @@ const Layout: NextPage = ({ children }) => {
             </Link>
           </li>
           <li>
+            <Link href="/admin">
+              <a>Admin (Admin restricted)</a>
+            </Link>
+          </li>
+          <li>
             <Link href="/terms">
               <a>Terms</a>
             </Link>
@@ -20,11 +25,6 @@ const Layout: NextPage = ({ children }) => {
           <li>
             <Link href="/auth/login">
               <a>Login</a>
-            </Link>
-          </li>
-          <li>
-            <Link href="/auth/register">
-              <a>Register</a>
             </Link>
           </li>
         </ul>

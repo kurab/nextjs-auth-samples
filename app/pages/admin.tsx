@@ -1,25 +1,31 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
 import styles from '../styles/Terms.module.css';
+import { useSession } from 'next-auth/react';
+import RestrictedMessage from '../components/atoms/RestrictedMessage';
 
-export const getServerSideProps = async (context: any) => ({
-  props: {
-    layout: 'auth',
-  },
-});
+const Admin: NextPage = () => {
+  const { data: session } = useSession();
 
-const Terms: NextPage = () => {
+  if (!session || (session && session.user.isAdmin === false)) {
+    return (
+      <RestrictedMessage
+        class={styles.containerContent}
+        message={'Display Forbidden.'}
+      />
+    );
+  }
   return (
     <div className={styles.containerContent}>
       <Head>
-        <title>Terms page | Auth Samples with Next.js + typescript</title>
+        <title>Admin page | Auth Samples with Next.js + typescript</title>
         <meta
           name="description"
           content="Terms | Auth Samples with Next.js + typescript"
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Terms</h1>
+      <h1>Admin Restricted!</h1>
       <p className={styles.paraTerms}>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quis tempora
         reprehenderit dicta ullam, molestiae nulla earum necessitatibus. Iure
@@ -36,4 +42,4 @@ const Terms: NextPage = () => {
   );
 };
 
-export default Terms;
+export default Admin;

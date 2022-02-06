@@ -2,9 +2,27 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 import Image from 'next/image';
 import styles from '../styles/Home.module.css';
+import { signOut, useSession } from 'next-auth/react';
+import RestrictedMessage from '../components/atoms/RestrictedMessage';
+import LoadingSpinner from '../components/atoms/LoadingSpinner';
+import { useState } from 'react';
 
 const Home: NextPage = () => {
-  const onClickLogout = () => alert('logout');
+  const { data: session } = useSession();
+  const [logoutLoading, setLoading] = useState<boolean>(false);
+  const onClickLogout = async () => {
+    setLoading(true);
+    await signOut();
+  };
+
+  if (!session)
+    return (
+      <RestrictedMessage
+        class={styles.containerContent}
+        message={'Login Required'}
+      />
+    );
+
   return (
     <div className={styles.containerContent}>
       <Head>
@@ -26,9 +44,15 @@ const Home: NextPage = () => {
         alt="Home Sweet Home"
       />
       <br />
-      <button className={styles.btnLogout} onClick={onClickLogout}>
-        Logout
-      </button>
+      {logoutLoading ? (
+        <button className={styles.btnLogout}>
+          <LoadingSpinner size={3} margin={8} color={'#fff'} />
+        </button>
+      ) : (
+        <button className={styles.btnLogout} onClick={onClickLogout}>
+          Logout
+        </button>
+      )}
     </div>
   );
 };
