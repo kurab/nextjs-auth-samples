@@ -8,16 +8,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   switch (pageProps.layout) {
     case 'auth': {
       return (
-        <AuthLayout>
+        <Layout>
           <Component {...pageProps} />
-        </AuthLayout>
+        </Layout>
       );
     }
     default: {
       return (
-        <Layout>
+        <AuthLayout>
           <Component {...pageProps} />
-        </Layout>
+        </AuthLayout>
       );
     }
   }

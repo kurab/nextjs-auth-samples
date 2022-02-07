@@ -53,4 +53,19 @@
 .imgKeyVisual {
   border-radius: 2rem;
 }
+
+.btnLogin {
+  margin-top: 2rem;
+  width: 300px;
+  padding: 1rem;
+  font-size: 1.8rem;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  border: none;
+  border-radius: 9999rem;
+  background-color: #f75454;
+  color: #fff;
+  cursor: pointer;
+}
 /*# sourceMappingURL=Home.module.css.map */
