@@ -2,6 +2,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import AuthLayout from '../components/templates/AuthLayout';
 import Layout from '../components/templates/Layout';
+import { AuthProvider } from '../providers/AuthProvider';
 
 //MyApp.getInitialProps = async () => ({ pageProps: {} });
 function MyApp({ Component, pageProps }: AppProps) {
@@ -15,9 +16,11 @@ function MyApp({ Component, pageProps }: AppProps) {
     }
     default: {
       return (
-        <AuthLayout>
-          <Component {...pageProps} />
-        </AuthLayout>
+        <AuthProvider>
+          <AuthLayout>
+            <Component {...pageProps} />
+          </AuthLayout>
+        </AuthProvider>
       );
     }
   }

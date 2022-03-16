@@ -1,7 +1,12 @@
 import type { NextPage } from 'next';
 import Head from 'next/head';
-import Image from 'next/image';
 import styles from '../styles/Terms.module.css';
+
+export const getServerSideProps = async (context: any) => ({
+  props: {
+    layout: 'auth',
+  },
+});
 
 const Terms: NextPage = () => {
   return (

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Head from 'next/head';
 import { useForm } from 'react-hook-form';
 import styles from '../../styles/auth/Login.module.css';
+import { useAuth } from '../../hooks/useAuth';
 
 export const getServerSideProps = async (context: any) => ({
   props: {
@@ -17,10 +18,17 @@ const Login: NextPage = () => {
     formState: { isDirty, isValid },
   } = useForm({ mode: 'onChange' });
 
+  const { login, logout } = useAuth();
+
   const onSubmitLogin = (formData: any) => {
     console.log(formData);
+    login(formData.email, formData.password);
   };
   const onClickGithubLogin = () => alert('github');
+
+  const onClickLogout = () => {
+    logout();
+  };
 
   return (
     <div className={styles.container}>
